@@ -1,0 +1,77 @@
+var _user$project$Hello$subscriptions = function (model) {
+	return _elm_lang$core$Platform_Sub$none;
+};
+var _user$project$Hello$view = function (model) {
+	return A3(
+		_elm_lang$virtual_dom$VirtualDom$parent,
+		'view',
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$virtual_dom$VirtualDom$yogaProperty,
+				'flexDirection',
+				_elm_lang$core$Json_Encode$string('column')),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$virtual_dom$VirtualDom$yogaProperty,
+					'flexGrow',
+					_elm_lang$core$Json_Encode$int(1)),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$virtual_dom$VirtualDom$yogaProperty,
+						'justifyContent',
+						_elm_lang$core$Json_Encode$string('center')),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$virtual_dom$VirtualDom$yogaProperty,
+							'alignItems',
+							_elm_lang$core$Json_Encode$string('center')),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$virtual_dom$VirtualDom$property,
+								'backgroundColor',
+								_elm_lang$core$Json_Encode$string('yellow')),
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$virtual_dom$VirtualDom$leaf,
+				'label',
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$virtual_dom$VirtualDom$property,
+						'text',
+						_elm_lang$core$Json_Encode$string('Hello from Elm!')),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$virtual_dom$VirtualDom$property,
+							'textColor',
+							_elm_lang$core$Json_Encode$string('red')),
+						_1: {ctor: '[]'}
+					}
+				}),
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$Hello$init = {
+	ctor: '_Tuple2',
+	_0: {ctor: '_Tuple0'},
+	_1: _elm_lang$core$Platform_Cmd$none
+};
+var _user$project$Hello$update = F2(
+	function (msg, model) {
+		return _user$project$Hello$init;
+	});
+var _user$project$Hello$main = _elm_lang$virtual_dom$VirtualDom$program(
+	{init: _user$project$Hello$init, update: _user$project$Hello$update, subscriptions: _user$project$Hello$subscriptions, view: _user$project$Hello$view})();

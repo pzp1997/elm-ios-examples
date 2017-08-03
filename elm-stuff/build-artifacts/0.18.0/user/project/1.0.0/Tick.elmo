@@ -1,0 +1,93 @@
+var _user$project$Tick$intYogaProperty = F2(
+	function (name, $int) {
+		return A2(
+			_elm_lang$virtual_dom$VirtualDom$yogaProperty,
+			name,
+			_elm_lang$core$Json_Encode$int($int));
+	});
+var _user$project$Tick$flexGrow = function (value) {
+	return A2(_user$project$Tick$intYogaProperty, 'flexGrow', value);
+};
+var _user$project$Tick$stringYogaProperty = F2(
+	function (name, string) {
+		return A2(
+			_elm_lang$virtual_dom$VirtualDom$yogaProperty,
+			name,
+			_elm_lang$core$Json_Encode$string(string));
+	});
+var _user$project$Tick$flexDirection = function (value) {
+	return A2(_user$project$Tick$stringYogaProperty, 'flexDirection', value);
+};
+var _user$project$Tick$justifyContent = function (value) {
+	return A2(_user$project$Tick$stringYogaProperty, 'justifyContent', value);
+};
+var _user$project$Tick$alignItems = function (value) {
+	return A2(_user$project$Tick$stringYogaProperty, 'alignItems', value);
+};
+var _user$project$Tick$stringProperty = F2(
+	function (name, string) {
+		return A2(
+			_elm_lang$virtual_dom$VirtualDom$property,
+			name,
+			_elm_lang$core$Json_Encode$string(string));
+	});
+var _user$project$Tick$text = function (value) {
+	return A2(_user$project$Tick$stringProperty, 'text', value);
+};
+var _user$project$Tick$column = F2(
+	function (properties, children) {
+		return A3(
+			_elm_lang$virtual_dom$VirtualDom$parent,
+			'view',
+			{
+				ctor: '::',
+				_0: _user$project$Tick$flexDirection('column'),
+				_1: properties
+			},
+			children);
+	});
+var _user$project$Tick$label = function (properties) {
+	return A2(_elm_lang$virtual_dom$VirtualDom$leaf, 'label', properties);
+};
+var _user$project$Tick$view = function (model) {
+	return A2(
+		_user$project$Tick$column,
+		{
+			ctor: '::',
+			_0: _user$project$Tick$flexGrow(1),
+			_1: {
+				ctor: '::',
+				_0: _user$project$Tick$justifyContent('center'),
+				_1: {
+					ctor: '::',
+					_0: _user$project$Tick$alignItems('center'),
+					_1: {ctor: '[]'}
+				}
+			}
+		},
+		{
+			ctor: '::',
+			_0: _user$project$Tick$label(
+				{
+					ctor: '::',
+					_0: _user$project$Tick$text(
+						_elm_lang$core$Basics$toString(model)),
+					_1: {ctor: '[]'}
+				}),
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$Tick$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		return {ctor: '_Tuple2', _0: model + 1, _1: _elm_lang$core$Platform_Cmd$none};
+	});
+var _user$project$Tick$init = {ctor: '_Tuple2', _0: 0, _1: _elm_lang$core$Platform_Cmd$none};
+var _user$project$Tick$Tick = function (a) {
+	return {ctor: 'Tick', _0: a};
+};
+var _user$project$Tick$subscriptions = function (model) {
+	return A2(_elm_lang$core$Time$every, _elm_lang$core$Time$second, _user$project$Tick$Tick);
+};
+var _user$project$Tick$main = _elm_lang$virtual_dom$VirtualDom$program(
+	{init: _user$project$Tick$init, update: _user$project$Tick$update, subscriptions: _user$project$Tick$subscriptions, view: _user$project$Tick$view})();
