@@ -1,7 +1,8 @@
-module Hello exposing (..)
+module Main exposing (..)
 
-import VirtualDom exposing (Node, parent, leaf, property, yogaProperty, program)
-import Json.Encode
+import VirtualDom.Element exposing (Element, column, label, program)
+import VirtualDom.Attributes exposing (flexGrow, justifyContent, alignItems, backgroundColor, text, textColor)
+import Color
 
 
 main : Program Never Model msg
@@ -9,7 +10,7 @@ main =
     program
         { init = init
         , update = update
-        , subscriptions = subscriptions
+        , subscriptions = \_ -> Sub.none
         , view = view
         }
 
@@ -40,26 +41,16 @@ update msg model =
 -- VIEW
 
 
-view : Model -> Node msg
+view : Model -> Element msg
 view model =
-    parent "view"
-        [ yogaProperty "flexDirection" (Json.Encode.string "column")
-        , yogaProperty "flexGrow" (Json.Encode.int 1)
-        , yogaProperty "justifyContent" (Json.Encode.string "center")
-        , yogaProperty "alignItems" (Json.Encode.string "center")
-        , property "backgroundColor" (Json.Encode.string "yellow")
+    column
+        [ flexGrow 1
+        , justifyContent "center"
+        , alignItems "center"
+        , backgroundColor Color.yellow
         ]
-        [ leaf "label"
-            [ property "text" (Json.Encode.string "Hello from Elm!")
-            , property "textColor" (Json.Encode.string "red")
+        [ label
+            [ text "Hello from Elm!"
+            , textColor Color.red
             ]
         ]
-
-
-
--- SUBSCRIPTIONS
-
-
-subscriptions : Model -> Sub msg
-subscriptions model =
-    Sub.none
