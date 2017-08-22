@@ -1,8 +1,8 @@
 module Main exposing (..)
 
-import Json.Encode
+import VirtualDom.Element exposing (Element, column, label, program)
+import VirtualDom.Attributes as Attributes
 import Task
-import VirtualDom exposing (Node, leaf, parent, program, property, yogaProperty)
 
 
 main : Program Never Model Msg
@@ -10,7 +10,7 @@ main =
     program
         { init = init
         , update = update
-        , subscriptions = subscriptions
+        , subscriptions = \_ -> Sub.none
         , view = view
         }
 
@@ -32,12 +32,6 @@ init =
 -- UPDATE
 
 
-send : msg -> Cmd msg
-send msg =
-    Task.succeed msg
-        |> Task.perform identity
-
-
 type Msg
     = Start
 
@@ -49,28 +43,22 @@ update msg model =
             ( "Hello", Cmd.none )
 
 
+send : msg -> Cmd msg
+send msg =
+    Task.succeed msg
+        |> Task.perform identity
+
+
 
 -- VIEW
 
 
-view : Model -> Node msg
+view : Model -> Element msg
 view model =
-    parent "view"
-        [ yogaProperty "flexDirection" (Json.Encode.string "column")
-        , yogaProperty "flexGrow" (Json.Encode.int 1)
-        , yogaProperty "justifyContent" (Json.Encode.string "center")
-        , yogaProperty "alignItems" (Json.Encode.string "center")
+    column
+        [ Attributes.flexGrow 1
+        , Attributes.justifyContent "center"
+        , Attributes.alignItems "center"
         ]
-        [ leaf "label"
-            [ property "text" (Json.Encode.string model)
-            ]
+        [ label [ Attributes.text model ]
         ]
-
-
-
--- SUBSCRIPTIONS
-
-
-subscriptions : Model -> Sub msg
-subscriptions model =
-    Sub.none
